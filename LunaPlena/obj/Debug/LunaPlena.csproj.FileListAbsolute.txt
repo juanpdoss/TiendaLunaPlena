@@ -1,0 +1,6 @@
+C:\Users\juanp\source\repos\LunaPlena\LunaPlena\bin\Debug\LunaPlena.dll
+C:\Users\juanp\source\repos\LunaPlena\LunaPlena\bin\Debug\LunaPlena.pdb
+C:\Users\juanp\source\repos\LunaPlena\LunaPlena\obj\Debug\LunaPlena.csprojAssemblyReference.cache
+C:\Users\juanp\source\repos\LunaPlena\LunaPlena\obj\Debug\LunaPlena.csproj.CoreCompileInputs.cache
+C:\Users\juanp\source\repos\LunaPlena\LunaPlena\obj\Debug\LunaPlena.dll
+C:\Users\juanp\source\repos\LunaPlena\LunaPlena\obj\Debug\LunaPlena.pdb

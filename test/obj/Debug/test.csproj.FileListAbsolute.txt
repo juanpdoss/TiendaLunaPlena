@@ -1,0 +1,10 @@
+C:\Users\juanp\source\repos\LunaPlena\test\bin\Debug\test.exe.config
+C:\Users\juanp\source\repos\LunaPlena\test\bin\Debug\test.exe
+C:\Users\juanp\source\repos\LunaPlena\test\bin\Debug\test.pdb
+C:\Users\juanp\source\repos\LunaPlena\test\bin\Debug\LunaPlena.dll
+C:\Users\juanp\source\repos\LunaPlena\test\bin\Debug\LunaPlena.pdb
+C:\Users\juanp\source\repos\LunaPlena\test\obj\Debug\test.csprojAssemblyReference.cache
+C:\Users\juanp\source\repos\LunaPlena\test\obj\Debug\test.csproj.CoreCompileInputs.cache
+C:\Users\juanp\source\repos\LunaPlena\test\obj\Debug\test.csproj.CopyComplete
+C:\Users\juanp\source\repos\LunaPlena\test\obj\Debug\test.exe
+C:\Users\juanp\source\repos\LunaPlena\test\obj\Debug\test.pdb

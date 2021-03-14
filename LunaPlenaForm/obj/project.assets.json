@@ -1,0 +1,92 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0-windows7.0": {
+      "LunaPlena/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/LunaPlena.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LunaPlena.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LunaPlena/1.0.0": {
+      "type": "project",
+      "path": "../LunaPlena/LunaPlena.csproj",
+      "msbuildProject": "../LunaPlena/LunaPlena.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0-windows7.0": [
+      "LunaPlena >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\juanp\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlenaForm\\LunaPlenaForm.csproj",
+      "projectName": "LunaPlenaForm",
+      "projectPath": "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlenaForm\\LunaPlenaForm.csproj",
+      "packagesPath": "C:\\Users\\juanp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlenaForm\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\juanp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0-windows7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "projectReferences": {
+            "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlena\\LunaPlena.csproj": {
+              "projectPath": "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlena\\LunaPlena.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0-windows7.0": {
+        "targetAlias": "net5.0-windows",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
