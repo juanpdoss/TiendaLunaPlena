@@ -10,37 +10,21 @@ namespace test
     {
         static void Main(string[] args)
         {
-            //Producto a = new Producto("kitty", 205);
-            //Producto b = new Producto("aritoXD", 340);
-            //Producto c = new Producto("botitas", 40);
-            //Producto d = new Producto("sombra", 340);
+           // Marca aux1 = new Marca("pepe");
+
+            Local.AgregarMarca("pepe");
+
+            Marca aux2 = Local.RetornaMarca(2);
 
 
-           //obtengo datos del Xml.
-            Local.ListaProductos = Serializador.ObtenerListaSerializada();
+            Producto aux3 = new Producto("ahre", 2333, aux2);
 
-            //No se agregan (ya estan incluidos)
-            //Local.AgregarProducto(a);
-            //Local.AgregarProducto(b);
-            //Local.AgregarProducto(a);
-            //Local.AgregarProducto(c);
-            //Local.AgregarProducto(d);
-
-            //Serializador.SerializarListaProductos(Local.ListaProductos);
+            Local.AgregarProducto(aux3);
+            Local.AgregarProducto(aux3);
+            Local.AgregarProducto(new Producto("ahre2", 3444, new Marca("ahreee")));
 
 
-            //muestro el local
-            //Console.WriteLine(Local.LocalToString());
-            Console.WriteLine("numero de productos: " + Local.listaProductos.Count);
-            //Console.WriteLine("pruebo quitar a");
-            // Local.QuitarProducto(a); 
-            Console.WriteLine("agrego un producto");
-            Local.AgregarProducto(new Producto("nuevo", 340));
-            Console.ReadKey();
-            Console.WriteLine("Numero de productos:" + Local.listaProductos.Count);
-
-            //Console.WriteLine(Local.LocalToString());
-
+            
             Console.ReadKey();
 
                 

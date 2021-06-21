@@ -9,11 +9,38 @@ namespace LunaPlena
     /// <summary>
     /// Clase publica e instaciable Producto. 
     /// </summary>
-    public class Producto
+    public class Producto:IComparable<Producto>
     {
         #region getters y setters 
         private string nombre;
         private float precio;
+        private Marca marca;
+
+         
+         
+        public string Marca
+        {
+            get
+            {
+                return this.marca.Nombre;
+            }
+            set
+            {
+                if(!String.IsNullOrEmpty(value))
+                {
+                    this.marca = new Marca(value);     
+                }
+                else
+                {
+                    this.marca = new Marca("sin nombre.");
+                }
+            }
+
+        }
+
+    
+         
+
 
         /// <summary>
         /// Retorna y establece (previa validacion) el atributo nombre.
@@ -44,13 +71,17 @@ namespace LunaPlena
             }
             set
             {
-                this.precio = value;
+                if(value>0)
+                {
+                   this.precio = value;
+                }
+                else
+                {
+                    this.precio = 0;
+                }              
             }
          
         }
-
-     
-
         #endregion
 
         #region constructores
@@ -59,26 +90,25 @@ namespace LunaPlena
         {
 
         }
-        public Producto(string nombre, float precio)
+        public Producto(string nombre, float precio,Marca marca)
         {
             this.Nombre = nombre;
             this.Precio = precio;
+            this.marca = marca;
         }
 
         #endregion
 
+
+
         /// <summary>
-        /// Retorna los datos de un producto.
+        /// que retorna el atributo marca.
         /// </summary>
-        /// <returns></returns>
-        public override string ToString()
+        public Marca GetObjetoMarca()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Producto: " + this.nombre);
-            sb.AppendLine("Precio: " + this.precio);
-          
-            return sb.ToString();
-             
+
+            return this.marca;
+
         }
 
         /// <summary>
@@ -91,7 +121,7 @@ namespace LunaPlena
         {
             bool sonIguales = false;
 
-            if (a.nombre == b.nombre)
+            if (a.nombre == b.nombre && a.marca == b.marca)
                 sonIguales = true;
 
 
@@ -107,6 +137,11 @@ namespace LunaPlena
         public static bool operator !=(Producto a,Producto b)
         {
             return !(a == b);
+        }
+
+        public int CompareTo(Producto other)
+        {
+            return this.precio.CompareTo(other.precio);
         }
 
 

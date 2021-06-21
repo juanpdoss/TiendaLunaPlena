@@ -12,18 +12,8 @@ namespace LunaPlena
     public static class Serializador
     {
         #region atributos y propiedades
-        private static string rutaArchivo;
-
-        /// <summary>
-        /// Retorna la ruta donde se encuentra el archivo xml.
-        /// </summary>
-        static public string Ruta 
-        { 
-            get
-            {
-                return Serializador.rutaArchivo;
-            }
-        }
+        private static string rutaArchivoProductos;
+        private static string rutaArchivoMarcas;
         #endregion
 
         #region constructor
@@ -33,8 +23,11 @@ namespace LunaPlena
         /// </summary>
         static Serializador()
         {
-            Serializador.rutaArchivo = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            Serializador.rutaArchivo+= "\\productosXml";
+            Serializador.rutaArchivoProductos = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            Serializador.rutaArchivoProductos += "\\productosXml";
+
+            Serializador.rutaArchivoMarcas = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            Serializador.rutaArchivoMarcas += "\\marcasXml";      
         }
 
 
@@ -54,7 +47,7 @@ namespace LunaPlena
             
             try
             {
-                using (xmlTextWriter = new XmlTextWriter(Serializador.rutaArchivo, Encoding.UTF8))
+                using (xmlTextWriter = new XmlTextWriter(Serializador.rutaArchivoProductos, Encoding.UTF8))
                 {
                     serializer = new XmlSerializer(typeof(List<Producto>));
                     serializer.Serialize(xmlTextWriter, productos);
@@ -72,26 +65,77 @@ namespace LunaPlena
         /// Obtiene una lista de productos a partir de un archivo Xml.
         /// </summary>
         /// <returns>Retorna la lista de productos o null en caso de error.</returns>
-        public static List<Producto> ObtenerListaSerializada()
+        public static List<Producto> ObtenerListaProductos()
         {
-            List<Producto> listaProductos=null;
+            List<Producto> listaProductos=new List<Producto>();
             XmlTextReader xmlTextReader; //Objeto que lee desde un archivo xml
             XmlSerializer xmlSerializer; //Objeto que deserealizada.
 
             //Si el archivo no existe retorno null.
-            if (!File.Exists(Serializador.rutaArchivo))
-                return Local.listaProductos;
+            if (!File.Exists(Serializador.rutaArchivoProductos))
+                return listaProductos;
 
-            using (xmlTextReader = new XmlTextReader(Serializador.rutaArchivo))
+            using (xmlTextReader = new XmlTextReader(Serializador.rutaArchivoProductos))
             {
                 xmlSerializer = new XmlSerializer(typeof(List<Producto>));
-
-                listaProductos =(List<Producto>)xmlSerializer.Deserialize(xmlTextReader);
+                listaProductos = (List<Producto>)xmlSerializer.Deserialize(xmlTextReader);
 
             }
 
+            
 
             return listaProductos;
+        }
+
+        /// <summary>
+        /// Serializada la lista de marcas
+        /// </summary>
+        /// <param name="listaMarcas"></param>
+        public static bool SerializarListaMarcas(List<Marca> listaMarcas)
+        {
+            bool pudeSerializar = true;
+            XmlSerializer serializer; //Objeto que serializa en Xml.
+            XmlTextWriter xmlTextWriter; //Objeto que escribe el archivo Xml.
+
+            try
+            {
+                using (xmlTextWriter = new XmlTextWriter(Serializador.rutaArchivoMarcas, Encoding.UTF8))
+                {
+                    serializer = new XmlSerializer(typeof(List<Marca>));
+                    serializer.Serialize(xmlTextWriter, listaMarcas);
+                }
+
+            }
+            catch
+            {
+                pudeSerializar = false;
+            }
+
+
+            return pudeSerializar;
+
+        }
+
+
+        public static List<Marca> ObtenerListaMarcas()
+        {
+            List<Marca> listaMarcas = new List<Marca>();
+            XmlTextReader xmlTextReader; //Objeto que lee desde un archivo xml
+            XmlSerializer xmlSerializer; //Objeto que deserealiza.
+
+            //Si el archivo no existe retorno null.
+            if (!File.Exists(Serializador.rutaArchivoMarcas))
+                return listaMarcas;
+
+            using (xmlTextReader = new XmlTextReader(Serializador.rutaArchivoMarcas))
+            {
+                xmlSerializer = new XmlSerializer(typeof(List<Marca>));
+                listaMarcas = (List<Marca>)xmlSerializer.Deserialize(xmlTextReader);
+
+            }
+
+            return listaMarcas;
+
         }
 
 

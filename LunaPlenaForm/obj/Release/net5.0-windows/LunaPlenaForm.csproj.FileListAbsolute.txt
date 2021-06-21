@@ -7,10 +7,7 @@ C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\bin\Release\net5.0-windows\r
 C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\bin\Release\net5.0-windows\LunaPlenaForm.pdb
 C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\bin\Release\net5.0-windows\LunaPlena.dll
 C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\bin\Release\net5.0-windows\LunaPlena.pdb
-C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.csprojAssemblyReference.cache
 C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.FrmAlta.resources
-C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.FormModificacion.resources
-C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.LunaPlena.resources
 C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.Properties.Resources.resources
 C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.csproj.GenerateResource.cache
 C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.GeneratedMSBuildEditorConfig.editorconfig
@@ -22,3 +19,8 @@ C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\L
 C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\ref\LunaPlenaForm.dll
 C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.pdb
 C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.genruntimeconfig.cache
+C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.FrmAltaMarca.resources
+C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.csproj.AssemblyReference.cache
+C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.FrmEliminarMarca.resources
+C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.FrmPrincipal.resources
+C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.FrmVentas.resources
