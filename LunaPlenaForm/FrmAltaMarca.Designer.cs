@@ -37,8 +37,9 @@ namespace LunaPlenaForm
             // 
             // btnAceptar
             // 
-            this.btnAceptar.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAceptar.BackColor = System.Drawing.Color.Pink;
             this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAceptar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAceptar.Location = new System.Drawing.Point(12, 132);
             this.btnAceptar.Name = "btnAceptar";
@@ -67,8 +68,9 @@ namespace LunaPlenaForm
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCancelar.BackColor = System.Drawing.Color.Pink;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancelar.Location = new System.Drawing.Point(98, 132);
             this.btnCancelar.Name = "btnCancelar";

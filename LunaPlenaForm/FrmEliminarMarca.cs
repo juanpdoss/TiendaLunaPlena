@@ -16,34 +16,40 @@ namespace LunaPlenaForm
         public FrmEliminarMarca()
         {
             InitializeComponent();
-            this.cboMarcas.DataSource = Local.listaMarcas;
+            this.cboMarcas.DataSource=Local.ListaMarcas;
             this.cboMarcas.DisplayMember = "nombre";
 
-            this.txtMarca.Text = Local.RetornaMarca(this.cboMarcas.SelectedIndex).ToString();
+           
+
+          
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            if(this.cboMarcas.SelectedIndex >-1)
+            {
+                Local.EliminarMarca(
+                Local.RetornarMarcaDesdeNombre(this.cboMarcas.Text)
+                ); 
+            }
+
 
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-
-            if(this.cboMarcas.SelectedIndex > -1)
-            {
-                int index = this.cboMarcas.SelectedIndex;
-                Local.listaMarcas.RemoveAt(index);
-
-            }
-            else
-            {
-                MessageBox.Show("Error, no hay marcas en el sistema.");
-                this.Close();
-            }
-
-    
+            this.Close();
         }
 
         private void cboMarcas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.txtMarca.Text = Local.RetornaMarca(this.cboMarcas.SelectedIndex).ToString();
+            int index  = this.cboMarcas.SelectedIndex;
+
+            Marca auxiliar = Local.RetornaMarca(index);
+
+            this.txtMarca.Text = auxiliar.ToString();
+
+
         }
     }
 }

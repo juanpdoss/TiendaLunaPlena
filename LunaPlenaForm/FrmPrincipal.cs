@@ -4,12 +4,11 @@ using System.Windows.Forms;
 
 namespace LunaPlenaForm
 {
-    public partial class LunaPlena : Form
+    public partial class FrmPrincipal : Form
     {
         BindingSource binding;
        
-
-        public LunaPlena()
+        public FrmPrincipal()
         {
             InitializeComponent();  
             Local.ListaProductos = Serializador.ObtenerListaProductos();
@@ -20,9 +19,16 @@ namespace LunaPlenaForm
    
         private void LunaPlena_Load(object sender, EventArgs e)
         {
+            this.menuPrincipal.Cursor = Cursors.Hand;
+            this.btnFiltrar.Cursor = Cursors.Hand;
+            this.btnVender.Cursor = Cursors.Hand;
+            this.btnOrdenar.Cursor = Cursors.Hand;
+
             this.binding.DataSource = Local.listaProductos;
             this.DgProductos.DataSource = this.binding;
             this.txtInfo.Text = Local.ObtenerInfoVentas();
+
+            
         }
 
         private void btnAlta_Click(object sender, EventArgs e)
@@ -38,57 +44,27 @@ namespace LunaPlenaForm
                     Producto productoNuevo = new Producto(frmAux.GetNombre, frmAux.GetPrecio, auxMarca);
                     if (!Local.AgregarProducto(productoNuevo))
                         MessageBox.Show("No se pudo agregar el producto, verifique que el nombre sea univoco.");
-
-                }
-
-                this.txtInfo.Text = Local.ObtenerInfoVentas();
-
+                }                          
             }
             else
             {
                 MessageBox.Show("No hay marcas en el sistema.");
             }
 
+            this.Actualizar();
+
         }
         private void LunaPlena_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Serializador.SerializarListaProductos(Local.ListaProductos);
-            if (!Serializador.SerializarListaMarcas(Local.ListaMarcas))
+            
+            if (!(Serializador.SerializarListaMarcas(Local.ListaMarcas)) || !(Serializador.SerializarListaProductos(Local.ListaProductos)))
             {
-                MessageBox.Show("Atencion, hubo un error al guardar las marcas antes de salir.");
+                MessageBox.Show("Atencion, hubo un error al guardar antes de salir. \nPudo existir una perdida de datos.");
             }
 
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-
-            if(Local.listaProductos.Count > 0)
-            {
-                FrmModificacion aux = new FrmModificacion();
-
-                DialogResult rta = aux.ShowDialog();
-
-                if (rta == DialogResult.OK)
-                {
-                    int i = this.DgProductos.CurrentCell.RowIndex;
-
-                    if (Local.ModificarProductoEnIndice(i, aux.GetNombre, aux.GetPrecio))
-                    {
-                        MessageBox.Show("Modificacion exitosa.");
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Modificacion cancelada.");
-                }
-
-            }
-
-         
-
-        }
+        
         private void btnBaja_Click(object sender, EventArgs e)
         {
             if(Local.listaProductos.Count > 0)
@@ -97,18 +73,17 @@ namespace LunaPlenaForm
                 {
                     int i = this.DgProductos.CurrentCell.RowIndex;
                     if (i > -1)
-                    {
-                        this.DgProductos.DataSource = null;
+                    {                       
                         Local.QuitarProducto(i);                    
                     }
-
                 }
                 catch
                 {
                     MessageBox.Show("No se pudo remover el producto. Revise si tiene seleccionada una linea.");
-
                 }
             }
+
+            this.Actualizar();
 
         }
 
@@ -138,11 +113,12 @@ namespace LunaPlenaForm
 
         private void btnOrdenar_Click(object sender, EventArgs e)
         {
-            if(Local.listaProductos.Count > 0)
+            if (Local.listaProductos.Count > 0)
             {
-               Local.OrdenarAscendente();
+                Local.OrdenarAscendente();
             }
-        
+            
+            this.Actualizar();
         }
 
         private void btnAgregarMarca_Click(object sender, EventArgs e)
@@ -159,63 +135,59 @@ namespace LunaPlenaForm
 
             }
 
+            this.Actualizar();
         }
 
-        private void btnVender_Click(object sender, EventArgs e)
+        private void btnVenderEfectivo_Click(object sender, EventArgs e)
         {
 
             if (this.DgProductos.SelectedRows.Count > 0)
             {
                 try
-                {
-                    DataGridViewRow fila = new DataGridViewRow();
-                    fila = this.DgProductos.SelectedRows[0];
+                {            
+                    DataGridViewRow fila = this.DgProductos.SelectedRows[0];
 
                     //obtengo los datos de la fila
-                    string nombreProducto = fila.Cells[0].Value.ToString();   
-                    float valorVendido = (float)fila.Cells[1].Value;
-                    Marca marca = Local.RetornarMarcaDesdeNombre(fila.Cells[2].Value.ToString());
-                    if(marca != null && valorVendido != 0)
+                    string nombreProducto = fila.Cells[1].Value.ToString();   
+                    float valorVendido = (float)fila.Cells[2].Value;
+                    Marca marca = Local.RetornarMarcaDesdeNombre(fila.Cells[0].Value.ToString());
+                    Local.GenerarInfoVenta(marca, valorVendido, nombreProducto,false);
+
+                    if (!Local.AgregarVentaEfectivo(marca, valorVendido, nombreProducto))
                     {
-                        if (!Local.AgregarVenta(marca, valorVendido, nombreProducto))
-                            MessageBox.Show("Hubo un error al registrar la venta en texto.");
-                    }   
+                        MessageBox.Show("Hubo un error al registrar la venta en texto.");
+                    }          
                     else
                     {
-                        MessageBox.Show("Marca o precio invalidos.");
+                        MessageBox.Show("Venta registrada");
                     }
-                    
-
-                    this.txtInfo.Text = Local.ObtenerInfoVentas();
-
+                                            
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-
                 }
 
             }
 
-
-
+            this.Actualizar();
         }
 
-        private void btnConfigurarMarcas_Click(object sender, EventArgs e)
+        private void btnEliminarMarca_Click(object sender, EventArgs e)
         {
-
-            if(Local.listaMarcas.Count > 0)
+            if(Local.ListaMarcas.Count > 0)
             {
-                FrmEliminarMarca form = new FrmEliminarMarca();
+                FrmEliminarMarca frmEliminarMarca = new FrmEliminarMarca();
+                DialogResult resultadoDialogo=frmEliminarMarca.ShowDialog();
 
-                DialogResult respuesta = form.ShowDialog();
-
-                if (respuesta == DialogResult.OK)
+                if(resultadoDialogo == DialogResult.OK)
                 {
-                    MessageBox.Show("Marca eliminada.");
-
+                    MessageBox.Show("Marca Eliminada");
                 }
-
+            }
+            else
+            {
+                MessageBox.Show("No hay marcas en el sistema.");
             }
 
         }
@@ -225,12 +197,63 @@ namespace LunaPlenaForm
             DialogResult respuesta = MessageBox.Show("Confirma reiniciar las cajas", "Atencion", MessageBoxButtons.YesNo);
 
             if(respuesta == DialogResult.Yes)
-            {
+            { 
                 Local.ResetearCajas();
-                this.txtInfo.Text = Local.ObtenerInfoVentas();
             }
+            this.Actualizar();
         }
 
       
+
+        private void btnVenderQR_Click(object sender, EventArgs e)
+        {
+            if (this.DgProductos.SelectedRows.Count > 0)
+            {
+                try
+                {      
+                    DataGridViewRow fila = this.DgProductos.SelectedRows[0];
+
+                    //obtengo los datos de la fila
+                    string nombreMarca = fila.Cells[0].Value.ToString();
+                    string nombreProducto = fila.Cells[1].Value.ToString();
+                    float valorVendido= (float)fila.Cells[2].Value;
+                    Marca marca = Local.RetornarMarcaDesdeNombre(nombreMarca);
+                    Local.GenerarInfoVenta(marca, valorVendido, nombreProducto,true);
+
+                    if (!Local.AgregarVentaQR(marca, valorVendido, nombreProducto))
+                    {
+                        MessageBox.Show("Hubo un error al registrar la venta en texto.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Venta registrada");
+                    }
+
+
+
+                   
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+
+            this.Actualizar();
+
+        }
+        private void Actualizar()
+        {
+            this.binding.ResetBindings(true);
+            this.DgProductos.Refresh();
+            this.txtInfo.Text = Local.ObtenerInfoVentas();
+        }
+
+        private void btnVerInfoVentas_Click(object sender, EventArgs e)
+        {
+            FrmVentas frmVentas = new FrmVentas();
+            frmVentas.ShowDialog();
+        }
     }
 }

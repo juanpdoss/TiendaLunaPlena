@@ -15,6 +15,7 @@ namespace LunaPlena
         #region atributos, getters y setters
         public static List<Producto> listaProductos;
         public static List<Marca> listaMarcas;
+        private static string pathInfoCajastxt;
 
         /// <summary>
         /// Obtiene y establece la lista de productos del local.
@@ -61,6 +62,8 @@ namespace LunaPlena
         {
             Local.listaProductos = new List<Producto>();
             Local.listaMarcas = new List<Marca>();
+            Local.pathInfoCajastxt= Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            pathInfoCajastxt+= "\\infoCajas.txt";
         }
         #endregion
 
@@ -100,7 +103,6 @@ namespace LunaPlena
                 {
                     estaIncluido = true;
                     break;
-
                 }         
             }
             return estaIncluido;
@@ -122,37 +124,11 @@ namespace LunaPlena
             }
             return pudeQuitar;
         }
-
-
-        /// <summary>
-        /// Modifica un producto en el indice recibido como parametro.
-        /// Si los parametros son invalidos, no se asignaran.
-        /// </summary>
-        /// <param name="i"></param>
-        /// <param name="nuevoNombre"></param>
-        /// <param name="nuevoPrecio"></param>
-        /// <returns>Retorna true en caso de modificar con exito, o false en caso contrario.</returns>
-        public static bool ModificarProductoEnIndice(int i,string nuevoNombre,float precioNuevo)
-        {
-            bool modifique = true;
-            Local.listaProductos.ElementAt(i).Nombre=nuevoNombre;
-            Local.listaProductos.ElementAt(i).Precio=precioNuevo;
-
-            if(Local.listaProductos.ElementAt(i).Nombre == "Nombre invalido." || Local.listaProductos.ElementAt(i).Precio == 0)
-            {
-                modifique = true;
-            }
-                           
-            return modifique;
-        }
-
-
         /// <summary>
         /// Crea una sublista de productos, los mismos coinciden en su campo Nombre con el parametro cadenaAbuscar.
         /// </summary>
         /// <param name="cadenaAbuscar"></param>
         /// <returns></returns>
-
         public static List<Producto> FiltrarProductos(string cadenaAbuscar)
         {
             List<Producto> aux = new List<Producto>();           
@@ -171,7 +147,7 @@ namespace LunaPlena
         /// <returns></returns>
         public static void OrdenarAscendente()
         {
-            Local.ListaProductos.OrderBy(producto=>producto.Precio);   
+            Local.ListaProductos.Sort();   
         }
 
         /// <summary>
@@ -190,7 +166,6 @@ namespace LunaPlena
                }
 
            }
-           
             return false;
         }
 
@@ -229,17 +204,58 @@ namespace LunaPlena
 
         }
 
+
         /// <summary>
-        /// Le suma a la marca recibida por parametro la venta realizada
+        /// Carga en la marca recibida por parametros los detalles de la venta realizada.
         /// </summary>
-        public static bool AgregarVenta(Marca marca,float valorVendido,string nombreProducto)
+        /// <param name="marca"></param>
+        /// <param name="valorVendido"></param>
+        /// <param name="nombreProducto"></param>
+
+        public static void GenerarInfoVenta(Marca marca,float valorVendido,string nombreProducto,bool usaQr)
         {
-            marca.CantidadVentas++;
-            marca.SumarEnCaja(valorVendido);
-            string informacion = $"Producto: {nombreProducto}, Precio: {valorVendido.ToString()}, Marca: {marca.Nombre}, fecha y hora de la venta: ";
-            return Local.GuardarVentaTxt(informacion);
+            string informacionParaMarca = $"Producto: {nombreProducto}, vendido por {valorVendido} pesos, pago realizado ";
+            if (usaQr)
+            {
+                informacionParaMarca += "por qr.\n";
+               
+            }
+            else
+            {
+                informacionParaMarca += "en efectivo\n";
+            }
+            
+            marca.InformacionVentas = informacionParaMarca;
+
         }
 
+
+        /// <summary>
+        /// Agrega una venta en efectivo a la marca.
+        /// </summary>
+        public static bool AgregarVentaEfectivo(Marca marca,float valorVendido,string nombreProducto)
+        {
+            marca.CantidadVentas++;
+            marca.SumarEfectivoEnCaja(valorVendido);
+            string informacionTxt = $"Producto: {nombreProducto}, Precio: {valorVendido.ToString()}, Marca: {marca.Nombre}, fecha y hora de la venta: ";
+            return Local.GuardarVentaTxt(informacionTxt,marca);
+        }
+
+
+        /// <summary>
+        /// Agrega una venta QR a la marca.
+        /// </summary>
+        /// <param name="marca"></param>
+        /// <param name="nombre"></param>
+        /// <param name="nombreProducto"></param>
+        /// <returns></returns>
+        public static bool AgregarVentaQR(Marca marca,float valorVendido,string nombreProducto)
+        {
+            marca.CantidadVentas++;
+            marca.SumarQRenCaja(valorVendido); 
+            string informacionTxt = $"Producto: {nombreProducto}\n, Pago por qr:{valorVendido.ToString()} , Marca: {marca.Nombre}, fecha y hora de la venta: ";
+            return Local.GuardarVentaTxt(informacionTxt,marca);
+        }
 
         /// <summary>
         /// retorna la marca cuyo nombre coincida con el string recibido por parametro
@@ -254,9 +270,7 @@ namespace LunaPlena
                 {
                     return item;
                 }
-
             }
-
             return null;
         }
 
@@ -268,41 +282,38 @@ namespace LunaPlena
         public static string ObtenerInfoVentas()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Estado de las marcas");
-            sb.AppendLine();
-            sb.AppendLine();
+            sb.AppendLine("Estado de las marcas\n");                  
             foreach (var item in ListaMarcas)
             {
-                sb.AppendLine($"Nombre: {item.Nombre} \ndinero en caja: {item.DineroEnCaja}");
+                sb.AppendLine($"Marca: {item.Nombre} \nDinero en efectivo: {item.DineroEfectivoEnCaja}\nDinero QR: {item.DineroQRenCaja}\nTotal en caja: {item.CajaTotal} \nConcreto {item.CantidadVentas} ventas.\n");
                 sb.AppendLine();
             }
-            sb.AppendLine();
-            sb.AppendLine();
-            sb.AppendLine();
-
+                  
             return sb.ToString();
         }
 
         /// <summary>
-        /// Guarda la venta realizada en un archivo de texto.
+        /// Guarda la venta realizada en un archivo de texto y en el atributo informacionVentas de la marca recibida por parametro.
         /// </summary>
         /// <param name="venta"></param>
         /// <returns></returns>
-        private static bool GuardarVentaTxt(string venta)
+        private static bool GuardarVentaTxt(string venta,Marca marca)
         {
             bool pudeGuardar = true;
 
-            string path=Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            path+= "\\infoCajas.txt";
+            string path = Local.pathInfoCajastxt;
+            
 
             string fecha = DateTime.Now.ToString();
             venta += fecha;
+
 
             try
             {
                 using (StreamWriter escritor = new StreamWriter(path, true))
                 {
                     escritor.WriteLine(venta);
+                    escritor.WriteLine();
                 }
             }
             catch
@@ -315,6 +326,40 @@ namespace LunaPlena
 
 
         /// <summary>
+        /// Retorna en formato string la informacion de las  ventas de todas las marcas
+        /// </summary>
+        /// <returns></returns>
+        public static string GetVentasPorMarca()
+        {
+            StringBuilder sb = new StringBuilder();
+            string fechaDehoy = DateTime.Now.ToString("MM/dd/yyyy");
+            sb.AppendLine("Luna Plena, jornada del dia " + fechaDehoy);
+            sb.AppendLine();
+
+            foreach (var item in Local.listaMarcas)
+            {
+                sb.AppendLine("Marca - " + item.Nombre);
+
+                if(item.InformacionVentas == "")
+                {
+                    sb.AppendLine("Sin ventas hasta el momento.");
+                }
+                else
+                {
+                   sb.AppendLine(item.InformacionVentas);
+                }
+               
+                sb.AppendLine();
+
+            }
+
+            sb.AppendLine("Pare reestablecer esta informacion es necesario reiniciar las cajas.");
+
+            return sb.ToString();
+        }
+
+
+        /// <summary>
         /// Vuelve a poner las cajas de todas las marcas en 0
         /// </summary>
         public static void ResetearCajas()
@@ -323,12 +368,22 @@ namespace LunaPlena
             {
                 foreach (Marca item in Local.listaMarcas)
                 {
-                    item.DineroEnCaja = 0;
+                    item.DineroEfectivoEnCaja = 0;
+                    item.DineroQRenCaja = 0;
+                    item.LimpiarInformacionVentas();
                 }
-            }
-            
+            }  
         }
 
+
+        /// <summary>
+        /// Elimina del Local todas los productos que sean de la marca recibida por parametro.
+        /// </summary>
+        /// <param name="marca"></param>
+        public static void EliminarMarca(Marca marca)
+        {                 
+           Local.ListaMarcas.Remove(marca);
+        }
 
         #endregion
 

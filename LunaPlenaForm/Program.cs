@@ -17,7 +17,7 @@ namespace LunaPlenaForm
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LunaPlena());
+            Application.Run(new FrmPrincipal());
 
         }
     }

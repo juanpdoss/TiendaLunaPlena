@@ -7,14 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LunaPlena;
 
 namespace LunaPlenaForm
 {
-    public partial class FrmModificacion : LunaPlenaForm.FrmAlta
+    public partial class FrmVentas : Form
     {
-        public FrmModificacion()
+        public FrmVentas()
         {
             InitializeComponent();
+            this.txtVentas.Text = Local.GetVentasPorMarca();
         }
     }
 }

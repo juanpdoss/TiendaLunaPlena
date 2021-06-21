@@ -9,7 +9,7 @@ namespace LunaPlena
     /// <summary>
     /// Clase publica e instaciable Producto. 
     /// </summary>
-    public class Producto
+    public class Producto:IComparable<Producto>
     {
         #region getters y setters 
         private string nombre;
@@ -37,6 +37,8 @@ namespace LunaPlena
             }
 
         }
+
+    
          
 
 
@@ -80,9 +82,6 @@ namespace LunaPlena
             }
          
         }
-
-     
-
         #endregion
 
         #region constructores
@@ -100,7 +99,17 @@ namespace LunaPlena
 
         #endregion
 
-  
+
+
+        /// <summary>
+        /// que retorna el atributo marca.
+        /// </summary>
+        public Marca GetObjetoMarca()
+        {
+
+            return this.marca;
+
+        }
 
         /// <summary>
         /// Dos productos seran iguales si comparten el nombre.
@@ -112,7 +121,7 @@ namespace LunaPlena
         {
             bool sonIguales = false;
 
-            if (a.nombre == b.nombre)
+            if (a.nombre == b.nombre && a.marca == b.marca)
                 sonIguales = true;
 
 
@@ -128,6 +137,11 @@ namespace LunaPlena
         public static bool operator !=(Producto a,Producto b)
         {
             return !(a == b);
+        }
+
+        public int CompareTo(Producto other)
+        {
+            return this.precio.CompareTo(other.precio);
         }
 
 

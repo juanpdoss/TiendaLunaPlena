@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunaPlena", "LunaPlena\LunaPlena.csproj", "{6D617954-3994-4EDE-970E-030125D09693}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{94A8699E-7EA9-41B2-A499-7DAF3E8A06CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LunaPlenaForm", "LunaPlenaForm\LunaPlenaForm.csproj", "{FF1D2DE4-D3A5-4D19-B7B4-E58B4C4D61EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunaPlenaForm", "LunaPlenaForm\LunaPlenaForm.csproj", "{FF1D2DE4-D3A5-4D19-B7B4-E58B4C4D61EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{6CCCB61F-6A79-4C72-9A47-0C4DFEC418DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{6D617954-3994-4EDE-970E-030125D09693}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D617954-3994-4EDE-970E-030125D09693}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D617954-3994-4EDE-970E-030125D09693}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94A8699E-7EA9-41B2-A499-7DAF3E8A06CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94A8699E-7EA9-41B2-A499-7DAF3E8A06CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94A8699E-7EA9-41B2-A499-7DAF3E8A06CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94A8699E-7EA9-41B2-A499-7DAF3E8A06CB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FF1D2DE4-D3A5-4D19-B7B4-E58B4C4D61EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FF1D2DE4-D3A5-4D19-B7B4-E58B4C4D61EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF1D2DE4-D3A5-4D19-B7B4-E58B4C4D61EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF1D2DE4-D3A5-4D19-B7B4-E58B4C4D61EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CCCB61F-6A79-4C72-9A47-0C4DFEC418DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CCCB61F-6A79-4C72-9A47-0C4DFEC418DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CCCB61F-6A79-4C72-9A47-0C4DFEC418DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CCCB61F-6A79-4C72-9A47-0C4DFEC418DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

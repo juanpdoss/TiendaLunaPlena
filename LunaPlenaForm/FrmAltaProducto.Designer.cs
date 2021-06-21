@@ -43,7 +43,7 @@ namespace LunaPlenaForm
             // 
             // btnAceptar
             // 
-            this.btnAceptar.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAceptar.BackColor = System.Drawing.Color.Pink;
             this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
             resources.ApplyResources(this.btnAceptar, "btnAceptar");
             this.btnAceptar.Name = "btnAceptar";
@@ -51,7 +51,7 @@ namespace LunaPlenaForm
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCancelar.BackColor = System.Drawing.Color.Pink;
             resources.ApplyResources(this.btnCancelar, "btnCancelar");
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
