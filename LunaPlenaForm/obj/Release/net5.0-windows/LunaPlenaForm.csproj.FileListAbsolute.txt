@@ -24,3 +24,4 @@ C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\L
 C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.FrmEliminarMarca.resources
 C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.FrmPrincipal.resources
 C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.FrmVentas.resources
+C:\Users\juanp\source\repos\LunaPlena\LunaPlenaForm\obj\Release\net5.0-windows\LunaPlenaForm.FrmQuitarDeCaja.resources

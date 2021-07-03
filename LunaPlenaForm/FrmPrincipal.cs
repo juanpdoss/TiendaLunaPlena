@@ -14,6 +14,7 @@ namespace LunaPlenaForm
             Local.ListaProductos = Serializador.ObtenerListaProductos();
             Local.ListaMarcas = Serializador.ObtenerListaMarcas();
             this.binding = new BindingSource();
+         
            
         }
    
@@ -250,16 +251,11 @@ namespace LunaPlenaForm
                     MessageBox.Show(ex.Message);
                 }
 
+                this.Actualizar();
             }
 
-            this.Actualizar();
+           
 
-        }
-        private void Actualizar()
-        {
-            this.binding.ResetBindings(true);
-            this.DgProductos.Refresh();
-            this.txtInfo.Text = Local.ObtenerInfoVentas();
         }
 
         private void btnVerInfoVentas_Click(object sender, EventArgs e)
@@ -267,5 +263,44 @@ namespace LunaPlenaForm
             FrmVentas frmVentas = new FrmVentas();
             frmVentas.ShowDialog();
         }
+
+        private void retirarDeCajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if(Local.listaMarcas.Count>0)
+            {
+                FrmQuitarDeCaja frmQuitarDeCaja = new FrmQuitarDeCaja();
+                DialogResult respuestaUsuario = frmQuitarDeCaja.ShowDialog();
+
+                if (respuestaUsuario == DialogResult.OK)
+                {
+                    if (frmQuitarDeCaja.quiteEfectivo)
+                    {
+                        MessageBox.Show("Extraccion de dinero registrada.");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al registrar la extraccion.\nRe ingrese un monto valido.");
+
+                    }
+
+                }
+
+                this.Actualizar();
+
+            }          
+
+        }
+
+
+        #region metodos propios del formulario
+        private void Actualizar()
+        {
+            this.binding.ResetBindings(true);
+            this.DgProductos.Refresh();
+            this.txtInfo.Text = Local.ObtenerInfoVentas();
+        }
+        #endregion
     }
 }

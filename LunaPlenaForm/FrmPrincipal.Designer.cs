@@ -46,6 +46,7 @@ namespace LunaPlenaForm
             this.agregarMarcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarMarcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reiniciarCajasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.retirarDeCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnVenderQR = new System.Windows.Forms.Button();
             this.btnVerInfoVentas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgProductos)).BeginInit();
@@ -78,7 +79,7 @@ namespace LunaPlenaForm
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DgProductos.DefaultCellStyle = dataGridViewCellStyle2;
             this.DgProductos.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.DgProductos.Location = new System.Drawing.Point(405, 96);
+            this.DgProductos.Location = new System.Drawing.Point(307, 96);
             this.DgProductos.MultiSelect = false;
             this.DgProductos.Name = "DgProductos";
             this.DgProductos.ReadOnly = true;
@@ -93,7 +94,7 @@ namespace LunaPlenaForm
             this.btnFiltrar.BackColor = System.Drawing.Color.Thistle;
             this.btnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFiltrar.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnFiltrar.Location = new System.Drawing.Point(754, 578);
+            this.btnFiltrar.Location = new System.Drawing.Point(648, 570);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(114, 31);
             this.btnFiltrar.TabIndex = 4;
@@ -103,7 +104,7 @@ namespace LunaPlenaForm
             // 
             // txtFiltra
             // 
-            this.txtFiltra.Location = new System.Drawing.Point(874, 578);
+            this.txtFiltra.Location = new System.Drawing.Point(776, 570);
             this.txtFiltra.Name = "txtFiltra";
             this.txtFiltra.Size = new System.Drawing.Size(113, 23);
             this.txtFiltra.TabIndex = 5;
@@ -113,7 +114,7 @@ namespace LunaPlenaForm
             this.btnOrdenar.BackColor = System.Drawing.Color.Thistle;
             this.btnOrdenar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnOrdenar.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnOrdenar.Location = new System.Drawing.Point(634, 47);
+            this.btnOrdenar.Location = new System.Drawing.Point(537, 47);
             this.btnOrdenar.Name = "btnOrdenar";
             this.btnOrdenar.Size = new System.Drawing.Size(114, 43);
             this.btnOrdenar.TabIndex = 6;
@@ -127,7 +128,7 @@ namespace LunaPlenaForm
             this.btnVender.BackColor = System.Drawing.Color.Thistle;
             this.btnVender.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnVender.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnVender.Location = new System.Drawing.Point(874, 47);
+            this.btnVender.Location = new System.Drawing.Point(776, 47);
             this.btnVender.Name = "btnVender";
             this.btnVender.Size = new System.Drawing.Size(113, 43);
             this.btnVender.TabIndex = 8;
@@ -138,11 +139,11 @@ namespace LunaPlenaForm
             // txtInfo
             // 
             this.txtInfo.BackColor = System.Drawing.Color.Thistle;
-            this.txtInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtInfo.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.txtInfo.Location = new System.Drawing.Point(0, 96);
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ReadOnly = true;
-            this.txtInfo.Size = new System.Drawing.Size(387, 464);
+            this.txtInfo.Size = new System.Drawing.Size(251, 464);
             this.txtInfo.TabIndex = 10;
             this.txtInfo.Text = "";
             // 
@@ -156,7 +157,7 @@ namespace LunaPlenaForm
             this.menuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.menuPrincipal.Name = "menuPrincipal";
             this.menuPrincipal.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuPrincipal.Size = new System.Drawing.Size(995, 28);
+            this.menuPrincipal.Size = new System.Drawing.Size(901, 28);
             this.menuPrincipal.TabIndex = 13;
             this.menuPrincipal.Text = "menu ";
             // 
@@ -189,7 +190,8 @@ namespace LunaPlenaForm
             this.marcasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agregarMarcaToolStripMenuItem,
             this.eliminarMarcaToolStripMenuItem,
-            this.reiniciarCajasToolStripMenuItem});
+            this.reiniciarCajasToolStripMenuItem,
+            this.retirarDeCajaToolStripMenuItem});
             this.marcasToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
             this.marcasToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
@@ -216,12 +218,19 @@ namespace LunaPlenaForm
             this.reiniciarCajasToolStripMenuItem.Text = "Reiniciar cajas";
             this.reiniciarCajasToolStripMenuItem.Click += new System.EventHandler(this.btnReiniciarCajas_Click);
             // 
+            // retirarDeCajaToolStripMenuItem
+            // 
+            this.retirarDeCajaToolStripMenuItem.Name = "retirarDeCajaToolStripMenuItem";
+            this.retirarDeCajaToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
+            this.retirarDeCajaToolStripMenuItem.Text = "Retirar de caja";
+            this.retirarDeCajaToolStripMenuItem.Click += new System.EventHandler(this.retirarDeCajaToolStripMenuItem_Click);
+            // 
             // btnVenderQR
             // 
             this.btnVenderQR.BackColor = System.Drawing.Color.Thistle;
             this.btnVenderQR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnVenderQR.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnVenderQR.Location = new System.Drawing.Point(754, 47);
+            this.btnVenderQR.Location = new System.Drawing.Point(657, 47);
             this.btnVenderQR.Name = "btnVenderQR";
             this.btnVenderQR.Size = new System.Drawing.Size(113, 43);
             this.btnVenderQR.TabIndex = 14;
@@ -234,7 +243,7 @@ namespace LunaPlenaForm
             this.btnVerInfoVentas.BackColor = System.Drawing.Color.Thistle;
             this.btnVerInfoVentas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnVerInfoVentas.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnVerInfoVentas.Location = new System.Drawing.Point(514, 47);
+            this.btnVerInfoVentas.Location = new System.Drawing.Point(417, 47);
             this.btnVerInfoVentas.Name = "btnVerInfoVentas";
             this.btnVerInfoVentas.Size = new System.Drawing.Size(114, 43);
             this.btnVerInfoVentas.TabIndex = 15;
@@ -249,7 +258,7 @@ namespace LunaPlenaForm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(995, 638);
+            this.ClientSize = new System.Drawing.Size(901, 638);
             this.Controls.Add(this.btnVerInfoVentas);
             this.Controls.Add(this.btnVenderQR);
             this.Controls.Add(this.txtInfo);
@@ -299,6 +308,7 @@ namespace LunaPlenaForm
         private System.Windows.Forms.ToolStripMenuItem reiniciarCajasToolStripMenuItem;
         private System.Windows.Forms.Button btnVenderQR;
         private System.Windows.Forms.Button btnVerInfoVentas;
+        private System.Windows.Forms.ToolStripMenuItem retirarDeCajaToolStripMenuItem;
     }
 }
 

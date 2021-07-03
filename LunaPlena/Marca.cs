@@ -16,7 +16,7 @@ namespace LunaPlena
         private int cantidadVentas;
         private string informacionVentas;
 
-
+        
         /// <summary>
         /// Retorna atributo informacionVentas;
         /// </summary>
@@ -34,14 +34,16 @@ namespace LunaPlena
 
         /// <summary>
         /// Retorna el total de una caja, sumando el dinero en efectivo y el dinero en QR.
+        /// Si se le asigna un valor, este es retado del atributo CajaTotal.
         /// </summary>
         public float CajaTotal
         {
             get
             {
                 return this.cajaQR + this.cajaEfectivo;
+                
             }
-            
+        
         }
             
         /// <summary>
@@ -119,7 +121,7 @@ namespace LunaPlena
         #endregion
 
         #region constructores
-        //Constructor por defecto
+        //Constructor por defecto, necesario para serializar
         public Marca()
         {
 
@@ -144,6 +146,23 @@ namespace LunaPlena
         {
             if(dinero>0)
             this.cajaEfectivo += dinero;   
+        }
+
+        /// <summary>
+        ///  Quita el monto recibido por parametro de la caja en efectivo de la marca..
+        /// </summary>
+        /// <param name="dinero"></param>
+        public bool RetirarEfectivoDeCaja(float dinero)
+        {
+            bool retiroExitoso = false;
+
+            if (dinero > -1 && dinero < this.cajaEfectivo)
+            {
+                this.cajaEfectivo -= dinero;
+                retiroExitoso = true;
+
+            }
+            return retiroExitoso;
         }
 
 
@@ -189,8 +208,7 @@ namespace LunaPlena
         public  void LimpiarInformacionVentas()
         {
             this.informacionVentas = "";
-            
-
+           
         }
 
         /// <summary>
@@ -209,6 +227,37 @@ namespace LunaPlena
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Retorna el nombre y el dinero en efectivo que tiene en la actualidad la marca. 
+        /// </summary>
+        /// <returns></returns>
+        public string GetInfoEnEfectivo()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Informacion de la marca");
+            sb.AppendLine($"Nombre: {this.nombre}");
+            sb.AppendLine($"Dinero en efectivo: {this.cajaEfectivo}");
+            
+            return sb.ToString();
+
+        }
+
+
+        /// <summary>
+        /// Vacia toda la caja en efectivo de la marca.
+        /// </summary>
+        public void VaciarCajaEfectivo()
+        {
+            this.cajaEfectivo = 0;
+        }
+
+        /// <summary>
+        /// Vacia toda la caja QR de la marca.
+        /// </summary>
+        public void VaciarCajaQR()
+        {
+            this.cajaQR = 0;
+        }
 
         #endregion
     }

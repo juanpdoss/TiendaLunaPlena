@@ -41,7 +41,7 @@ namespace LunaPlenaForm
             this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAceptar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAceptar.Location = new System.Drawing.Point(12, 132);
+            this.btnAceptar.Location = new System.Drawing.Point(12, 115);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(80, 32);
             this.btnAceptar.TabIndex = 0;
@@ -50,9 +50,9 @@ namespace LunaPlenaForm
             // 
             // txtNombreMarca
             // 
-            this.txtNombreMarca.Location = new System.Drawing.Point(12, 75);
+            this.txtNombreMarca.Location = new System.Drawing.Point(12, 44);
             this.txtNombreMarca.Name = "txtNombreMarca";
-            this.txtNombreMarca.Size = new System.Drawing.Size(100, 23);
+            this.txtNombreMarca.Size = new System.Drawing.Size(134, 23);
             this.txtNombreMarca.TabIndex = 2;
             // 
             // lblIngreseNombre
@@ -60,7 +60,7 @@ namespace LunaPlenaForm
             this.lblIngreseNombre.AutoSize = true;
             this.lblIngreseNombre.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblIngreseNombre.ForeColor = System.Drawing.Color.Black;
-            this.lblIngreseNombre.Location = new System.Drawing.Point(12, 22);
+            this.lblIngreseNombre.Location = new System.Drawing.Point(12, 9);
             this.lblIngreseNombre.Name = "lblIngreseNombre";
             this.lblIngreseNombre.Size = new System.Drawing.Size(165, 21);
             this.lblIngreseNombre.TabIndex = 3;
@@ -72,7 +72,7 @@ namespace LunaPlenaForm
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelar.Location = new System.Drawing.Point(98, 132);
+            this.btnCancelar.Location = new System.Drawing.Point(127, 115);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(84, 32);
             this.btnCancelar.TabIndex = 4;
@@ -85,8 +85,9 @@ namespace LunaPlenaForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Pink;
+            this.BackgroundImage = global::LunaPlenaForm.Properties.Resources.cinna1;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(194, 176);
+            this.ClientSize = new System.Drawing.Size(223, 166);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.lblIngreseNombre);
             this.Controls.Add(this.txtNombreMarca);

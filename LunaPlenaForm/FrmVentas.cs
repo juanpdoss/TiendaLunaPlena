@@ -18,5 +18,12 @@ namespace LunaPlenaForm
             InitializeComponent();
             this.txtVentas.Text = Local.GetVentasPorMarca();
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            this.txtVentas.Text = "";
+            Local.LimpiarVentas();
+            this.txtVentas.Text = Local.GetVentasPorMarca();
+        }
     }
 }

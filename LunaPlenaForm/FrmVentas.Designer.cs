@@ -30,6 +30,7 @@ namespace LunaPlenaForm
         private void InitializeComponent()
         {
             this.txtVentas = new System.Windows.Forms.RichTextBox();
+            this.btnAceptar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtVentas
@@ -42,13 +43,26 @@ namespace LunaPlenaForm
             this.txtVentas.TabIndex = 0;
             this.txtVentas.Text = "";
             // 
+            // btnAceptar
+            // 
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAceptar.Location = new System.Drawing.Point(482, 457);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(89, 38);
+            this.btnAceptar.TabIndex = 2;
+            this.btnAceptar.Text = "Limpiar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
             // FrmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Pink;
+            this.BackgroundImage = global::LunaPlenaForm.Properties.Resources.cinna1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(583, 451);
+            this.ClientSize = new System.Drawing.Size(583, 507);
+            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtVentas);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -62,5 +76,6 @@ namespace LunaPlenaForm
         #endregion
 
         private System.Windows.Forms.RichTextBox txtVentas;
+        private System.Windows.Forms.Button btnAceptar;
     }
 }

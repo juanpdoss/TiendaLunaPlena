@@ -18,9 +18,6 @@ namespace LunaPlenaForm
             InitializeComponent();
             this.cboMarcas.DataSource=Local.ListaMarcas;
             this.cboMarcas.DisplayMember = "nombre";
-
-           
-
           
         }
 

@@ -20,23 +20,22 @@ namespace LunaPlena
         /// <summary>
         /// Obtiene y establece la lista de productos del local.
         /// </summary>
-           public static List<Producto> ListaProductos
-           {
-                get
+        public static List<Producto> ListaProductos
+        {
+            get
+            {
+                return Local.listaProductos;
+            }
+            set
+            {              
+                if(value!=null)
                 {
-                    return Local.listaProductos;
+                    Local.listaProductos = value;
                 }
-                set
-                {              
-                    if(value!=null)
-                    {
-                        Local.listaProductos = value;
-                    }
                      
-                }
+            }
 
-
-           }
+        }
 
         /// <summary>
         /// Obtiene y establece la lista de marcas del local.
@@ -135,7 +134,7 @@ namespace LunaPlena
             foreach (var item in Local.listaProductos)
             {
                 if (item.Nombre.Contains(cadenaAbuscar))
-                    aux.Add(item);
+                            aux.Add(item);
             }
 
             return aux;
@@ -237,7 +236,7 @@ namespace LunaPlena
         {
             marca.CantidadVentas++;
             marca.SumarEfectivoEnCaja(valorVendido);
-            string informacionTxt = $"Producto: {nombreProducto}, Precio: {valorVendido.ToString()}, Marca: {marca.Nombre}, fecha y hora de la venta: ";
+            string informacionTxt = $"Producto: {nombreProducto} de la marca {marca.Nombre}, el cliente pago en efectivo {valorVendido.ToString()} pesos, fecha y hora de la venta: ";
             return Local.GuardarVentaTxt(informacionTxt,marca);
         }
 
@@ -253,7 +252,7 @@ namespace LunaPlena
         {
             marca.CantidadVentas++;
             marca.SumarQRenCaja(valorVendido); 
-            string informacionTxt = $"Producto: {nombreProducto}\n, Pago por qr:{valorVendido.ToString()} , Marca: {marca.Nombre}, fecha y hora de la venta: ";
+            string informacionTxt = $"Producto: {nombreProducto} de la Marca {marca.Nombre}, el cliente pago por qr: {valorVendido.ToString()} pesos,  fecha y hora de la venta: ";
             return Local.GuardarVentaTxt(informacionTxt,marca);
         }
 
@@ -353,7 +352,7 @@ namespace LunaPlena
 
             }
 
-            sb.AppendLine("Pare reestablecer esta informacion es necesario reiniciar las cajas.");
+            
 
             return sb.ToString();
         }
@@ -368,22 +367,55 @@ namespace LunaPlena
             {
                 foreach (Marca item in Local.listaMarcas)
                 {
-                    item.DineroEfectivoEnCaja = 0;
-                    item.DineroQRenCaja = 0;
-                    item.LimpiarInformacionVentas();
+                    item.VaciarCajaEfectivo();
+                    item.VaciarCajaQR();
                 }
             }  
         }
 
+        /// <summary>
+        /// Limpia la informacion de las ventas de todas las marcas en el local.
+        /// </summary>
+        public static void LimpiarVentas()
+        {
+            if (Local.listaMarcas.Count > 0)
+            {
+                foreach (Marca item in Local.listaMarcas)
+                {                  
+                    item.LimpiarInformacionVentas();
+                }
+            }
+        }
 
         /// <summary>
-        /// Elimina del Local todas los productos que sean de la marca recibida por parametro.
+        /// Elimina del Local la marca recibida por parametro.
         /// </summary>
         /// <param name="marca"></param>
         public static void EliminarMarca(Marca marca)
         {                 
            Local.ListaMarcas.Remove(marca);
         }
+
+
+        /// <summary>
+        /// Anexa al archivo infoCajas.txt la informacion de un retiro de dinero.
+        /// </summary>
+        /// <param name="marca"></param>
+        /// <param name="montoRetirado"></param>
+        public static void RegistrarRetiroEfectivo(Marca marca, float montoRetirado)
+        {
+            string info = $"La marca {marca.Nombre}, hizo un retiro de {montoRetirado} pesos, dinero actual de la marca:{marca.CajaTotal}, Fecha del retiro: {DateTime.Now}";
+            using(StreamWriter escritorTxt=new StreamWriter(Local.pathInfoCajastxt,true))
+            {
+                if(File.Exists(pathInfoCajastxt))
+                {
+                   escritorTxt.WriteLine(info);
+                }
+            }
+
+        }
+
+
 
         #endregion
 

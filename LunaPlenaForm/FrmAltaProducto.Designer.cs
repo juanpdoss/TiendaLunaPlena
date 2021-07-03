@@ -76,18 +76,19 @@ namespace LunaPlenaForm
             // lblNombre
             // 
             resources.ApplyResources(this.lblNombre, "lblNombre");
-            this.lblNombre.BackColor = System.Drawing.Color.LightPink;
+            this.lblNombre.BackColor = System.Drawing.Color.Transparent;
             this.lblNombre.Name = "lblNombre";
             // 
             // lblPrecio
             // 
             resources.ApplyResources(this.lblPrecio, "lblPrecio");
-            this.lblPrecio.BackColor = System.Drawing.Color.Pink;
+            this.lblPrecio.BackColor = System.Drawing.Color.Transparent;
             this.lblPrecio.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblPrecio.Name = "lblPrecio";
             // 
             // cmbMarcas
             // 
+            this.cmbMarcas.BackColor = System.Drawing.Color.Pink;
             this.cmbMarcas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMarcas.FormattingEnabled = true;
             resources.ApplyResources(this.cmbMarcas, "cmbMarcas");
@@ -96,7 +97,7 @@ namespace LunaPlenaForm
             // lblMarca
             // 
             resources.ApplyResources(this.lblMarca, "lblMarca");
-            this.lblMarca.BackColor = System.Drawing.Color.Pink;
+            this.lblMarca.BackColor = System.Drawing.Color.Transparent;
             this.lblMarca.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.lblMarca.Name = "lblMarca";
             // 
@@ -106,6 +107,7 @@ namespace LunaPlenaForm
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Pink;
+            this.BackgroundImage = global::LunaPlenaForm.Properties.Resources.cinna1;
             this.CancelButton = this.btnCancelar;
             this.ControlBox = false;
             this.Controls.Add(this.lblMarca);
