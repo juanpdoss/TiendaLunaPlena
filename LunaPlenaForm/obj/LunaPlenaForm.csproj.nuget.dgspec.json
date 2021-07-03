@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlenaForm\\LunaPlenaForm.csproj": {}
+    "C:\\Users\\juanp\\Desktop\\TiendaLunaPlena\\LunaPlenaForm\\LunaPlenaForm.csproj": {}
   },
   "projects": {
-    "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlenaForm\\LunaPlenaForm.csproj": {
+    "C:\\Users\\juanp\\Desktop\\TiendaLunaPlena\\LunaPlenaForm\\LunaPlenaForm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlenaForm\\LunaPlenaForm.csproj",
+        "projectUniqueName": "C:\\Users\\juanp\\Desktop\\TiendaLunaPlena\\LunaPlenaForm\\LunaPlenaForm.csproj",
         "projectName": "LunaPlenaForm",
-        "projectPath": "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlenaForm\\LunaPlenaForm.csproj",
+        "projectPath": "C:\\Users\\juanp\\Desktop\\TiendaLunaPlena\\LunaPlenaForm\\LunaPlenaForm.csproj",
         "packagesPath": "C:\\Users\\juanp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlenaForm\\obj\\",
+        "outputPath": "C:\\Users\\juanp\\Desktop\\TiendaLunaPlena\\LunaPlenaForm\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\juanp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlena\\LunaPlena.csproj": {
-                "projectPath": "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlena\\LunaPlena.csproj"
+              "C:\\Users\\juanp\\Desktop\\TiendaLunaPlena\\LunaPlena\\LunaPlena.csproj": {
+                "projectPath": "C:\\Users\\juanp\\Desktop\\TiendaLunaPlena\\LunaPlena\\LunaPlena.csproj"
               }
             }
           }
@@ -65,11 +65,11 @@
         }
       }
     },
-    "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlena\\LunaPlena.csproj": {
+    "C:\\Users\\juanp\\Desktop\\TiendaLunaPlena\\LunaPlena\\LunaPlena.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlena\\LunaPlena.csproj",
+        "projectUniqueName": "C:\\Users\\juanp\\Desktop\\TiendaLunaPlena\\LunaPlena\\LunaPlena.csproj",
         "projectName": "LunaPlena",
-        "projectPath": "C:\\Users\\juanp\\source\\repos\\LunaPlena\\LunaPlena\\LunaPlena.csproj"
+        "projectPath": "C:\\Users\\juanp\\Desktop\\TiendaLunaPlena\\LunaPlena\\LunaPlena.csproj"
       },
       "frameworks": {
         "net472": {}
